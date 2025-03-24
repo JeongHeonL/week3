@@ -1,7 +1,4 @@
-# TIL = week3
-<pre>
-  <code>
-    /*
+/*
 class Person {
   String _name = "";
   int _age = 0;
@@ -116,6 +113,8 @@ void main() {
 
 */
 
+/*
+
 abstract class Monster {
   void attack();
 }
@@ -144,110 +143,121 @@ void main() {
   //
 }
 
+*/
+
 /*
-enum LoginStatus { login, logout }
+
+enum Status { login, logout } // enum = 열거타입이라고 함 특정한 값의 집합을 정의할 때 사용
 
 void main() {
-  LoginStatus status = LoginStatus.logout;
+  var s1 = Status.login;
+  var s2 = Status.logout;
 
-  print(status);
-
-  switch (status) {
-    case LoginStatus.login:
+  switch (s2) {
+    case Status.login:
       print('로그인');
       break;
-    case LoginStatus.logout:
+    case Status.logout:
       print('로그아웃');
       break;
   }
 }
+
 */
+
 /*
+
 void main() {
-  List<int> lottoNums = [5, 6, 11, 13, 17, 21];
-  Map<String, String> countryMap = {'한국': '서울', '일본': '도쿄', '중국': '북경'};
-  Set<int> setNums = {1, 2, 3, 4, 5, 6};
+  var lottonums = [5, 6, 11, 13, 17, 21];
+  lottonums.forEach((num) {
+    print(num);
+  });
+  lottonums.forEach((num) => print(num));
+  lottonums.forEach(print);
 
-  print(lottoNums[0]); //5
-  print(countryMap['일본']); //도쿄
-  print(setNums.contains(5)); //true
+  lottonums.remove(6);
+  lottonums.add(9);
+  print(lottonums);
 
-  lottoNums.add(45); //보너스번호
-  print(lottoNums);
+  var map = {'한국': '서울', '일본': '도쿄'};
+  print(map['한국']);
+  map['중국'] = '북경';
+  print(map);
+}
+
+*/
+
+/*
+
+Function getFunc(bool isChoice) {
+  return isChoice == true ? () => '왼쪽' : () => '오른쪽';
+}
+
+void main() {
+  var func = getFunc(true);
+  var result = func();
+  print(result);
+}
+
+*/
+
+/*
+
+void main() {
+  var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  print(nums);
+  print(nums.length);
+
+  var evenums = nums.where((n) => n % 2 == 0).toList(); // 짝수
+  print(evenums);
+
+  var strnums = evenums.map((n) => '#$n').toList(); // 짝수
+  print(strnums);
+
+  var nums2 = [1, 2, 3, 3, 3, 4, 5, 6, 6];
+  print(nums2);
+  print(nums2.toSet().toList()); // 중복없애줌
+
+  print(nums2.any((e) => e == 3)); // 뭐임이거?
+
+  nums2
+    ..add(-1)
+    ..add(-2)
+    ..add(-3);
+  print(nums2);
+}
+
+
+*/
+
+/*
+
+void main(){
+  bool promoactive = true;
   
-  countryMap['인도'] = '인디아';
-  print(countryMap);
-  
-  setNums.add(7);
-  print(setNums);
+  /* if (promoactive){
+  print([1,2,3,4,5,6]);
+} else {
+  print([1,2,3,4,5]);
 }
 */
-/*
-void main(){
-  var lottoNums ={5,6,11,13,17,21};
+
+print([1,2,3,4,5, if (promoactive) 6]);
   
-  lottoNums.forEach((num) => print(num));
-  
-  var f = () => print('된다');
-  f();
-}
-*/
-/*
-void main(){
-  final items = [1,2,3,4,5];
-  
-  var result = items;
-  result.add(6);
-  result.remove(2);
-  print(result); //[1,3,4,5,6]
-  
-  print(items
-        ..add(6)
-        ..remove(2));
-}
-*/
-/*
-void main(){
-  bool promoActive = true;
-  
-  var result = [1,2,3,4,5,if(promoActive) 6];
-  print (result);
-}
-*/
-/*
-void main(){
-  var listOfInts = [1,2,3];
-  
-  var listOfStrings = [
+  var listofints = [1,2,3];
+  var listofstrings = [
     '#0',
-    for(var i in listOfInts) '#$i'
-  ];
-  print(listOfStrings);
+    for
+  ]
 }
-
-class Person {
-  String? name;
-  int? age;
-}
-
-void main(){
-  var p = Person();
-  p.name = '장정호';
-  print(p.name?.length ?? 0);
-}
-
-
+*/
 
 void main() {
-  for (int i = 2; i < 10; i++) {
-    for (int j = 1; j < 10; j++) {
-      print('$i x $j = ${i * j}');
-    }
-    print(' ');
-  }
+  String? name; // 변수 오른쪽에 ? 를 주면 null 뜸
+  print(name?.length ?? 0);
 }
 
-
+/*
 class Person {
   // 쿨래스 필드 이름 앞에 '_'를 붙이는 것은 다수의 언어에서 사용하는 스타일임
   // 예) Jave, C++, C#
@@ -303,102 +313,4 @@ void main() {
 
   // left, top, width, height <-> left, top, right, bottom
 }
-
-
-class Hero {
-  String name = '영웅';
-  
-  void run() {
-    print('뛴다');
-  }
-}
-
-class SuperHero extends Hero {
-  void run() {
-    super.run();
-    this.fly();
-  }
-  
-  void fly() {
-    print('난다!');
-  }
-}
-
-void main()
-{
-  var hero = SuperHero();
-  hero.run();
-  //hero.fly();
-  print(hero.name);
-}
-
-
-//monster는 attack 할 수있다
-abstract class Monster {
-  void attack();
-}
-
-//goblin는 고릅을 할 수있따
-class Goblin implements Monster {
-  @override
-  void attack() {
-    print('고블린 어택!');
-  }
-}
-
-class Bat implements Monster {
-  @override
-  void attack(){
-    print('할퀴기!');
-  }
-}
-  
-void main() {
-  Goblin g1 = Goblin();
-  Bat b1 = Bat();
-  g1.attack();
-  b1.attack();
-
-  print('');
-
-  List<Monster> monsters = [g1, b1];
-  monsters.forEach((m) => m.attack());
-}
-
-
-enum Status { login, logout }
-
-void main() {
-  var authStatus = Status.logout;
-  print(authStatus);
-  
-  switch (authStatus) {
-    case Status.login:
-      print('로그인');
-      break;
-    case Status.logout:
-      print('로그아웃');
-      break;
-  }
-}
-
-
-
-void main() {
-  var l1 = {1, 2, 3, 4, 5, 6};
-  var l2
-}
-
-void main(){
-  var lottoNums ={5,6,11,13,17,21};
-  lottoNums.forEach((num) => print(num));
-}
 */
-
-
-
-
-
-    
-  </code>
-</pre>
